@@ -1,0 +1,25 @@
+ body{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    background-color: rgb(48, 184, 172);
+ }
+#score{
+    background-color: black;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+
+
+}
+#submit{
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div{
+    display: flex;
+    justify-content: center;
+}

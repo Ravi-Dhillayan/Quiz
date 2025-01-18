@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quez</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+
+<body>
+    <div id="score">
+        <div>
+            <h2 id="heading">____</h2>
+        </div>
+        <p> <input class="Radio" name="name" type="radio" value="a"><label id="first" for="java"></label></p>
+        <p> <input class="Radio" name="name" type="radio" value="b"><label id="second" for="Cpp"></label></p>
+        <p> <input class="Radio" name="name" type="radio" value="c"> <label id="three" for="J_S"></label></p>    
+        <p><input class="Radio" name="name" type="radio" value="d"><label id="four" id="four" for="None"></label></p>
+        <div><button id="submit">Submit</button></div>
+
+       
+    </div>
+   
+
+</body>
+<script>
+    const first = document.getElementById("first")
+    const second = document.getElementById("second")
+    const three = document.getElementById("three")
+    const four = document.getElementById("four")
+    const submit = document.getElementById("submit")
+    const heading = document.getElementById("heading")
+    let radio = document.getElementsByClassName("Radio")
+    let score=document.getElementById("score")
+
+    // first.textContent=""
+    // second.textContent=""
+    // three.textContent=""
+    // four.textContent=""
+    let index = 0;
+    let right = 0;
+    const allQuestion = [
+        {
+            Question: " Which of the folllowing is a client site language ?",
+            a: "JAVA", b: "J_S", c: "CPP", d: "CSS", answer: "b"
+        },
+        {
+            Question: " What does HTML Stand for ?",
+            a: "Hypertext Markup Language :", b: "Cascading Style Sheet", c: "Jason Object Notaion", d: "None of the about",
+            answer: "a"
+        },
+        {
+            Question: "What year was JavaScript Launguage ?",
+            a: "1996", b: "1995", c: "2000", d: "1997", answer: "b",
+        },
+        {
+            Question: "What does CSS Stand for ?",
+            a: "Hypertext Markup Language :", b: "Cascading Style Sheet", c: "Jason Object Notaion",
+            d: "None of the about : ", answer: "b"
+        },
+    ]
+     load_Quiz();
+    function load_Quiz(){
+        if(index==allQuestion.length){
+            score.style.color="green"
+            score.style.fontSize="60px";
+            return score.innerHTML=` Your Total Score ${right}/ ${allQuestion.length}`
+        }
+      else
+      {
+          let data = allQuestion[index];
+    heading.innerHTML = `${index+1}) ${data.Question}`
+    first.textContent = data.a;
+    second.textContent = data.b;
+    three.textContent = data.c;
+    four.textContent = data.d;
+      }
+    
+
+    }
+    submit.addEventListener("click", function () {
+        let Answer = givenAnswer()
+        let data = allQuestion[index];
+        console.log(Answer);   
+        console.log(data.answer);
+         
+     if(Answer==data.answer){
+        right++;
+        console.log(right);
+     }
+    index++;
+   
+    console.log(radio);
+    
+    load_Quiz();
+   
+    
+    })
+
+    let givenAnswer = () => {
+        let value;
+        document.querySelectorAll('.Radio').forEach((element) => {
+
+            // console.log(element.checked);
+            if (element.checked) {
+                value = element.value
+            }
+            element.checked=false;
+        });
+        return value
+    }
+   
+
+
+
+
+
+</script>
+
+</html>
